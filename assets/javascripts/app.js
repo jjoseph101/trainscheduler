@@ -17,18 +17,24 @@ $(document).ready(function(){
 	var trainTime = "";
 	var frequency = 0;
 	var minutesAway = 0;
-	//var convertedDate = moment(new Date(trainTime));
 
+	//submit button event listener
 	$("#submit").on("click", function(){
 
+		//grab data
 		trainName = $("#tName").val().trim();
 		destination = $("#destin").val().trim();
 		trainTime = $("#trainTime").val().trim();
-		console.log("trainName :" + trainName);
-		console.log("destination :" + destination);
-		console.log("trainTime :" + trainTime);
 		frequency = parseInt($("#freq").val().trim());
+
+		//test data grab
+		console.log("trainName: " + trainName);
+		console.log("destination: " + destination);
+		console.log("trainTime: " + trainTime);
+		console.log("frequency: " + frequency);
+
 		
+		// add entry to firebase DB
 		database.ref().push({
 			name: trainName,
 			destin: destination,
@@ -36,10 +42,16 @@ $(document).ready(function(){
 			rate: frequency,
 			dateAdded: firebase.database.ServerValue.TIMESTAMP
 		});
+		
+		//clear form
+		$("#tName")[0].reset ();		
 
+		//no next page
 		return false;
+
 	});
 
+	//event listener for when entry added to firebase DB
 	database.ref().on("child_added", function(snapshot){
 
 		//var convertedDate = moment(new Date(snapshot.val().start));
@@ -54,8 +66,6 @@ $(document).ready(function(){
 		console.log(trainName);
 		console.log(destination);
 		console.log(trainTime);
-		//console.log("converted "+convertedDate);
-		//console.log("months "+monthsWorked);
 		console.log(frequency);
 		console.log(minutesAway);
 
