@@ -1,0 +1,14 @@
+.boldy {
+	font-weight: bold;
+	font-size: 15px;
+}
+
+.jumbotron {
+		background-color:orangered;
+		color:#fff;
+		text-align:center;
+}
+
+.unboldy {
+	font-weight: normal;
+}
