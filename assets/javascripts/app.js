@@ -1,3 +1,4 @@
+// javascript file
 $(document).ready(function(){
 
 	// function to show current time
